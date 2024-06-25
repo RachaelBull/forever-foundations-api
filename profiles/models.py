@@ -10,7 +10,7 @@ class Profile(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=250, default="")
-    phone = models.IntegerField(max_length=11, blank=True)
+    phone = models.IntegerField(blank=True)
     bio = models.TextField(blank=True)
     image = ResizedImageField(
         size=[300, None],
@@ -26,6 +26,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.owner}'s profile"
+
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
