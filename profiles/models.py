@@ -10,7 +10,7 @@ class Profile(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=250, default="")
-    phone = models.IntegerField(blank=True)
+    phone = models.IntegerField(blank=True, null=True)
     bio = models.TextField(blank=True)
     image = ResizedImageField(
         size=[300, None],
@@ -31,5 +31,6 @@ class Profile(models.Model):
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(owner=instance)
+
 
 post_save.connect(create_profile, sender=User)

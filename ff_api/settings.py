@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
 
     'profiles',
 ]
@@ -82,6 +83,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ff_api.wsgi.application'
+
+CSRF_TRUSTED_ORIGINS = ['https://*.codeinstitute-ide.net']
 
 
 # Database
