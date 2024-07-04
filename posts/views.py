@@ -5,12 +5,26 @@ from rest_framework.views import APIView
 from .models import Post
 from .serializers import PostSerializer
 from ff_api.permissions import IsOwnerOrReadOnly
+from django.db.models import Count
 
 class PostList(APIView):
     serializer_class = PostSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ] # built in user authentication using the restframework import permissions ^^
+    queryset = Post.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_on')
+    filter_backends = [
+        filters.OrderingFilter
+     ]
+
+    ordering_fields = [
+        'likes_count',
+        'comments_count',
+        'likes__created_on',
+    ]
 
     def get(self, request):
         posts = Post.objects.all()
@@ -31,6 +45,10 @@ class PostList(APIView):
 class PostDetail(APIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
+    queryset = Post.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_on')
 
     def get_object(self, pk):
         try:
