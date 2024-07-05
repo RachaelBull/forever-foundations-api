@@ -63,7 +63,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-rachaelbull-foreverfoun-ojgvrjl8161.ws.codeinstitute-ide.net', 'forever-foundations-api.herokuapp.com']
+ALLOWED_HOSTS = ['8000-rachaelbull-foreverfoun-ojgvrjl8161.ws.codeinstitute-ide.net', 'forever-foundations-api-449e3c9227c3.herokuapp.com']
 
 
 # Application definition
