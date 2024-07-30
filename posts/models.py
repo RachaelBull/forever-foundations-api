@@ -27,8 +27,8 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    location = models.TextField(max_length=7, choices=LOCATION_OPTIONS, default='england')
-    theme = models.CharField(max_length=9, choices=THEME_OPTIONS, default='classic')
+    location = models.TextField(max_length=7, choices=LOCATION_OPTIONS, default='Not Specified')
+    theme = models.CharField(max_length=9, choices=THEME_OPTIONS, default='Not Specified')
     image = models.ImageField(
         upload_to='images/', default='../default_post_a0da7q', blank=True
     )
