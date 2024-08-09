@@ -13,8 +13,8 @@ class ReviewSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_created_at(self, obj):
-        return naturaltime(obj.created_at)
+    def get_natural_created_on(self, obj):
+        return naturaltime(obj.natural_created_on)
 
     class Meta:
         model = Review
