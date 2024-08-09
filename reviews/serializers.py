@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import Review, Profile
 
 class ReviewSerializer(serializers.ModelSerializer):
-    profile = serializers.ReadOnlyField(source='profile.id')
+    profile = serializers.PrimaryKeyRelatedField(queryset=Profile.objects.all())
     owner_username = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
