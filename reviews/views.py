@@ -9,12 +9,12 @@ class ReviewList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Review.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['owner__profile']
+    filterset_fields = ['profile']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = ReviewSerializer #
+    serializer_class = ReviewDetailSerializer #
     queryset = Review.objects.all()
