@@ -1,4 +1,4 @@
-from django.contrib.humanize.templatetags.humanize import naturaltime #'7 hours ago' etc
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Comment
 
