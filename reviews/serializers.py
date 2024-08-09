@@ -14,7 +14,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_natural_created_on(self, obj):
-        return naturaltime(obj.natural_created_on)
+        return naturaltime(obj.created_on)
 
     class Meta:
         model = Review
