@@ -5,7 +5,6 @@ from .models import Review, Profile
 class ReviewSerializer(serializers.ModelSerializer):
     owner_username = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     natural_created_on = serializers.SerializerMethodField()
 
@@ -19,7 +18,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = [
-            'id', 'owner_username', 'is_owner', 'profile_id', 'profile_image',
+            'id', 'owner_username', 'is_owner', 'profile_image',
             'natural_created_on', 'content', 'title'
         ]
 
