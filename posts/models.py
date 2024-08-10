@@ -3,18 +3,18 @@ from django.contrib.auth.models import User
 
 
 LOCATION_OPTIONS = (
-    ('Greece', 'GREECE'),
-    ('Spain', 'SPAIN'),
-    ('Italy', 'ITALY'),
-    ('England', 'ENGLAND'),
+    ('greece', 'GREECE'),
+    ('spain', 'SPAIN'),
+    ('italy', 'ITALY'),
+    ('england', 'ENGLAND'),
 )
 
 THEME_OPTIONS = (
-    ('Beach', 'BEACH'),
-    ('Barn', 'BARN'),
-    ('Classic', 'CLASSIC'),
-    ('Rustic', 'RUSTIC'),
-    ('Fairytale', 'FAIRYTALE'),
+    ('beach', 'BEACH'),
+    ('barn', 'BARN'),
+    ('classic', 'CLASSIC'),
+    ('rustic', 'RUSTIC'),
+    ('fairytale', 'FAIRYTALE'),
 )
 
 class Post(models.Model):
