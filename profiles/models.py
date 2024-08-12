@@ -8,7 +8,6 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=250, default="")
     phone = models.IntegerField(blank=True, null=True)
     bio = models.TextField(blank=True)

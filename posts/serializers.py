@@ -2,6 +2,7 @@ from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
 
+
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -12,17 +13,17 @@ class PostSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
-        if value.size > 1024 * 1024 * 2: #2MB file size limit
+        if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
-                'Image file size too large. Please select an image that is 2MB or smaller.'
+                'Image file size too large.'
             )
         if value.image.width > 4069:
             raise serializers.ValidationError(
-                'Image file width too large. Please select an image with a width of 4069px or smaller.'
+                'Image file width too large.'
             )
         if value.image.height > 4069:
             raise serializers.ValidationError(
-                'Image file height too large. Please select an image with a height of 4069px or smaller.'
+                'Image file height too large.'
             )
         return value
 
@@ -42,7 +43,8 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id', 'profile_image', 'created_on', 
-            'updated_on', 'title', 'content', 'location', 'theme', 'image', 'is_owner', 
-            'like_id', 'likes_count', 'comments_count', 
+            'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
+            'created_on', 'updated_on', 'title', 'content', 'location',
+            'theme', 'image', 'is_owner', 'like_id', 'likes_count',
+            'comments_count',
         ]

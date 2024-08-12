@@ -3,12 +3,12 @@ from .models import Post
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+
 class PostListViewTests(APITestCase):
     def setUp(self):
         User.objects.create_user(username='test', password='testpassword')
 
     def test_can_list_posts(self):
-       
         test_user = User.objects.get(username='test')
         Post.objects.create(owner=test_user, title='test title')
         response = self.client.get('/posts/')
@@ -25,15 +25,20 @@ class PostListViewTests(APITestCase):
         response = self.client.post('/posts/', {'title': 'test title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
+
 class PostDetailViewTests(APITestCase):
+
     def setUp(self):
-        test_user = User.objects.create_user(username='test', password='testpassword')
-        test_user_two = User.objects.create_user(username='testtwo', password='testpasswordtwo')
+        test_user = User.objects.create_user(username='test',
+                                             password='testpassword')
+        test_user_two = User.objects.create_user(username='testtwo',
+                                                 password='testpasswordtwo')
         Post.objects.create(
             owner=test_user, title='test title', content='test user content'
         )
         Post.objects.create(
-            owner=test_user_two, title='test title two', content='test user content two'
+            owner=test_user_two, title='test title two',
+            content='test user content two'
         )
 
     def test_can_retrieve_post_using_valid_id(self):
@@ -56,4 +61,5 @@ class PostDetailViewTests(APITestCase):
         self.client.login(username='test', password='testpassword')
         response = self.client.put('/posts/2/', {'title': 'a new title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
 

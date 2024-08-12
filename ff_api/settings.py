@@ -64,7 +64,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # DEBUG = 'DEV' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-rachaelbull-foreverfoun-ojgvrjl8161.ws.codeinstitute-ide.net', os.environ.get('ALLOWED_HOST'),]
+ALLOWED_HOSTS = [
+    '8000-rachaelbull-foreverfoun-ojgvrjl8161.ws.codeinstitute-ide.net',
+    os.environ.get('ALLOWED_HOST'), ]
 
 
 # Application definition
@@ -109,7 +111,7 @@ MIDDLEWARE = [
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
-     CORS_ALLOWED_ORIGINS = [
+    CORS_ALLOWED_ORIGINS = [
          os.environ.get('CLIENT_ORIGIN')
     ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
@@ -164,7 +166,8 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -201,3 +204,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

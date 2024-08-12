@@ -17,6 +17,7 @@ THEME_OPTIONS = (
     ('fairytale', 'FAIRYTALE'),
 )
 
+
 class Post(models.Model):
     """
     Post model, related to 'owner', i.e. a User instance.
@@ -27,7 +28,8 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    location = models.TextField(max_length=7, choices=LOCATION_OPTIONS, default='')
+    location = models.TextField(max_length=7, choices=LOCATION_OPTIONS,
+                                default='')
     theme = models.CharField(max_length=9, choices=THEME_OPTIONS, default='')
     image = models.ImageField(
         upload_to='images/', default='../default_post_a0da7q', blank=True
